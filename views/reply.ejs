@@ -1,0 +1,30 @@
+<style>
+    body {text-align: center;background-color: black;color: white;}
+    div {text-align: left;}
+</style>
+<body>
+    <div>
+        <form action='/return' method="get">
+            <input type='submit' name='Return' value='Return' >
+        </form>
+    </div>
+    <span><%= messages.User.name %></span>
+    <span style="font-size: small;">@<%= messages.User.username %></span><br>
+    <span>Peep: <%= messages.peep %></span><br>
+    <span> Sent at: <%= messages.createdAt %></span><br>
+    <% if (userId !== undefined) { %>
+        <form action='/<%=messages.id%>/reply' method="post">
+            <input type='text' name='replyText' placeholder="Reply">
+            <input type='submit' name='Reply' value='Reply'>
+        </form>
+    <% } %>
+    <% messages.replies.map ((reply,index) => { %>
+        <% users.map ((user,index) => { %>
+            <% if (reply.UserId === user.id) { %>
+                <p><%= user.name %>
+                <span style="font-size:small">@<%= user.username %></span><br>
+        <% }}) %>
+        <span>Reply:<%= reply.text %></span></p>
+        <span>Sent at: <%= reply.createdAt %></span>
+    <% }) %>
+</body>

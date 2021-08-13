@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {text-align: left;background-color: black;color: white;}
+    div {text-align: center;}
+</style>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <form action='/signOut' method='post'>
+        <input id='signOut' type='submit' name='signOut' value='Sign Out'>
+    </form>
+    <div>
+        <h1>Chitter</h1>
+        <h2>The legally distinct short message posting application</h2>
+        <h3>Welcome:<%=users.name%></h3>
+    </div>
+
+    <div>
+        <form action='/makePeep' method='post'>
+            <input id="message" type='text' name='peep' placeholder='Peep'>
+            <input id="add-button" type='submit' value='Send Peep'>
+        </form>
+    </div>
+
+    <div>
+        <% messages.map ((message,index) => { %>
+            <p></p>
+            <span><b><%= message.User.name %></b></span>
+            <span style="font-size: small;">@<%= message.User.username %></span><br>
+            <span id='<%= `peep${index + 1}` %>'>Peep: <%= message.peep %></span><br>
+            <span> Sent at: <%= message.createdAt %></span><br>
+            <form action='/<%=message.id%>/replies' method="get">
+                <input type='submit' name='Replies' value='Replies'>
+            </form>
+            <% if (message.User.id === userId) { %>
+                <form action='/<%=message.id%>?_method=DELETE' method='post'>
+                    <input type='submit' name='Delete' value='Delete'>
+                </form>
+            <% } %>
+        <% }) %>
+    </div>
+        
+</body>
+</html>

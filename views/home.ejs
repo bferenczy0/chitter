@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body {text-align: left;background-color: black;color: white;}
+    div {text-align: center;}
+</style>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <form action='/login' method='get'>
+        <input id='login' type='submit' name='login' value='Login'>
+    </form>
+    <form action='/signUp' method='get'>
+        <input id='signUp' type='submit' name='signUp' value='Sign Up'>
+    </form>
+    <div>
+        <h1>Chitter</h1>
+        <h2>The legally distinct short message posting application</h2>
+    </div>
+    <div>
+        <% messages.map ((message,index) => { %>
+            <p></p>
+            <span><b><%= message.User.name %></b></span>
+            <span style="font-size: small;">@<%= message.User.username %></span><br>
+            <span id='<%= `peep${index + 1}` %>'>Peep: <%= message.peep %></span><br>
+            <span> Sent at: <%= message.createdAt %></span><br>
+            <form action='/<%=message.id%>/replies' method="get">
+                <input type='submit' name='Replies' value='Replies'>
+            </form>
+        <% }) %>
+    </div>
+        
+</body>
+</html>
