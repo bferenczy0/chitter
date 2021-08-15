@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bferenczy0/chitter.git"
+    "url": "git+https://github.com/bferenczy0/chitter-challenge.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bferenczy0/chitter/issues"
+    "url": "https://github.com/bferenczy0/chitter-challenge/issues"
   },
-  "homepage": "https://github.com/bferenczy0/chitter#readme",
+  "homepage": "https://github.com/bferenczy0/chitter-challenge#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cypress": "^8.2.0",
