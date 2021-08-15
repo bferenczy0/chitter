@@ -5,7 +5,7 @@
 <body>
     <div>
         <form action='/return' method="get">
-            <input type='submit' name='Return' value='Return' >
+            <input id='return' type='submit' name='Return' value='Return' >
         </form>
     </div>
     <span><%= messages.User.name %></span>
@@ -24,7 +24,7 @@
                 <p><%= user.name %>
                 <span style="font-size:small">@<%= user.username %></span><br>
         <% }}) %>
-        <span>Reply:<%= reply.text %></span></p>
+        <span id='<%= `reply${index + 1}`%>'>Reply:<%= reply.text %></span></p>
         <span>Sent at: <%= reply.createdAt %></span>
     <% }) %>
 </body>

@@ -17,18 +17,18 @@
         <input id='signUp' type='submit' name='signUp' value='Sign Up'>
     </form>
     <div>
-        <h1>Chitter</h1>
-        <h2>The legally distinct short message posting application</h2>
+        <h1 id='header1'>Chitter</h1>
+        <h2 id='header2'>The legally distinct short message posting application</h2>
     </div>
     <div>
         <% messages.map ((message,index) => { %>
             <p></p>
-            <span><b><%= message.User.name %></b></span>
-            <span style="font-size: small;">@<%= message.User.username %></span><br>
+            <span id='<%= `name${index + 1}` %>'><b><%= message.User.name %></b></span>
+            <span id='<%= `username${index + 1}` %>'style="font-size: small;">@<%= message.User.username %></span><br>
             <span id='<%= `peep${index + 1}` %>'>Peep: <%= message.peep %></span><br>
-            <span> Sent at: <%= message.createdAt %></span><br>
+            <span id='<%= `sentAt${index + 1}` %>'> Sent at: <%= message.createdAt %></span><br>
             <form action='/<%=message.id%>/replies' method="get">
-                <input type='submit' name='Replies' value='Replies'>
+                <input id='<%= `reply${index + 1}` %>'type='submit' name='Replies' value='Replies'>
             </form>
         <% }) %>
     </div>

@@ -29,16 +29,16 @@
     <div>
         <% messages.map ((message,index) => { %>
             <p></p>
-            <span><b><%= message.User.name %></b></span>
-            <span style="font-size: small;">@<%= message.User.username %></span><br>
+            <span id='<%= `name${index + 1}` %>'><b><%= message.User.name %></b></span>
+            <span id='<%= `username${index + 1}` %>' style="font-size: small;">@<%= message.User.username %></span><br>
             <span id='<%= `peep${index + 1}` %>'>Peep: <%= message.peep %></span><br>
-            <span> Sent at: <%= message.createdAt %></span><br>
+            <span id='<%= `sentAt${index + 1}` %>'> Sent at: <%= message.createdAt %></span><br>
             <form action='/<%=message.id%>/replies' method="get">
                 <input type='submit' name='Replies' value='Replies'>
             </form>
             <% if (message.User.id === userId) { %>
                 <form action='/<%=message.id%>?_method=DELETE' method='post'>
-                    <input type='submit' name='Delete' value='Delete'>
+                    <input id='<%= `deleteButton${index + 1}` %>' type='submit' name='Delete' value='Delete'>
                 </form>
             <% } %>
         <% }) %>
