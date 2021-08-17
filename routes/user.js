@@ -15,6 +15,7 @@ router.post('/newUser', async (req,res) => {
         username: req.body.username,
         passwordHash: bcrypt.hashSync(req.body.password)
     })
+    console.log('test')
 
     req.session.userId = user.id
 
